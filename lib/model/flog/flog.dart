@@ -487,4 +487,15 @@ class FLog {
   static _isLogsConfigValid() {
     return _config != null && _config.isLogsEnabled;
   }
+
+  static logLog(Log log){
+    //check to see if user provides a valid configuration and logs are enabled
+    //if not then don't do anything
+    if (_isLogsConfigValid()) {
+      //writing it to DB
+      _writeLogs(log);
+    } else {
+      throw Exception(Constants.EXCEPTION_NOT_INIT);
+    }
+  }
 }
